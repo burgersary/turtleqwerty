@@ -3,127 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming Zone</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>CloakJS Game - Catch the Object</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #2b2b2b;
-            color: #fff;
+            background-color: #f0f0f0;
         }
-
-        header {
-            background-color: #111;
-            padding: 20px;
-            text-align: center;
+        #gameCanvas {
+            display: block;
+            margin: 0 auto;
+            background-color: #282c34;
         }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-
-        nav {
-            background-color: #333;
-            display: flex;
-            justify-content: center;
-            padding: 10px;
-        }
-
-        nav a {
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            background-color: #444;
-        }
-
-        .container {
-            padding: 20px;
-        }
-
-        .featured-games {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-        }
-
-        .game-card {
-            background-color: #444;
-            width: 30%;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .game-card img {
-            width: 100%;
-            border-radius: 8px;
-        }
-
-        .game-card h3 {
-            font-size: 1.5em;
-            margin-top: 10px;
-        }
-
-        footer {
-            background-color: #111;
-            text-align: center;
-            padding: 20px;
+        .scoreboard {
             position: fixed;
-            width: 100%;
-            bottom: 0;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Gaming Zone</h1>
-    </header>
-
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#games">Games</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="container">
-        <section id="home">
-            <h2>Welcome to Gaming Zone</h2>
-            <p>Your one-stop destination for all things gaming. Explore, play, and enjoy your favorite games!</p>
-        </section>
-
-        <section id="games">
-            <h2>Featured Games</h2>
-            <div class="featured-games">
-                <div class="game-card">
-                    <img src="game1.jpg" alt="Game 1">
-                    <h3>Game 1</h3>
-                    <p>Adventure awaits in this exciting action game!</p>
-                </div>
-                <div class="game-card">
-                    <img src="game2.jpg" alt="Game 2">
-                    <h3>Game 2</h3>
-                    <p>Race against the clock in this high-speed challenge!</p>
-                </div>
-                <div class="game-card">
-                    <img src="game3.jpg" alt="Game 3">
-                    <h3>Game 3</h3>
-                    <p>Unravel mysteries in this thrilling puzzle game!</p>
-                </div>
-            </div>
-        </section>
+    <div class="scoreboard">
+        Score: <span id="score">0</span>
     </div>
+    <canvas id="gameCanvas" width="500" height="600"></canvas>
 
-    <footer>
-        <p>&copy; 2024 Gaming Zone. All Rights Reserved.</p>
-    </footer>
+    <script>
+        // Setting up the canvas and context
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Game variables
+        let score = 0;
+        let gameOver = false;
+        let player = { x: 200, y: 500, width: 50, height: 50, speed: 10 };
+        let fallingObject = { x: Math.random() * canvas.width, y: -30, radius: 20, speed: 3 };
+
+        // Update the game state
+        function updateGame() {
+            if (gameOver) {
+                return;
+            }
+            
+            // Clear the canvas for the next frame
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw the player
+            ctx.fillStyle = '#3498db';
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+            
+            // Draw the falling object
+            ctx.fillStyle = '#e74c3c';
+            ctx.beginPath();
+            ctx.arc(fallingObject.x, fallingObject.y, fallingObject.radius, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Move the falling object down
+            fallingObject.y += fallingObject.speed;
+
+            // Check if the falling object hit the player
+            if (fallingObject.y + fallingObject.radius > player.y && 
+                fallingObject.x > player.x && 
+                fallingObject.x < player.x + player.width) {
+                    score++;
+                    document.getElementById('score').innerText = score;
+                    fallingObject.y = -30; // Reset the falling object position
+                    fallingObject.x = Math.random() * canvas.width; // New random position
+            }
+
+            // Check if the falling object goes out of bounds
+            if (fallingObject.y > canvas.height) {
+                gameOver = true;
+                alert("Game Over! Your final score: " + score);
+            }
+
+            // Update the game loop
+            requestAnimationFrame(updateGame);
+        }
+
+        // Control the player with arrow keys
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft' && player.x > 0) {
+                player.x -= player.speed;
+            }
+            if (event.key === 'ArrowRight' && player.x + player.width < canvas.width) {
+                player.x += player.speed;
+            }
+        });
+
+        // Start the game loop
+        updateGame();
+    </script>
 </body>
 </html>
+
