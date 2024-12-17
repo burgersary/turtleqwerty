@@ -3,100 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CloakJS Game - Catch the Object</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        #gameCanvas {
-            display: block;
-            margin: 0 auto;
-            background-color: #282c34;
-        }
-        .scoreboard {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            color: white;
-            font-size: 20px;
-        }
-    </style>
+    <title>Awesome Gaming Hub</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="scoreboard">
-        Score: <span id="score">0</span>
-    </div>
-    <canvas id="gameCanvas" width="500" height="600"></canvas>
+    <header>
+        <div class="logo">
+            <h1>Awesome Gaming Hub</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Games</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <script>
-        // Setting up the canvas and context
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
+    <main>
+        <section class="intro">
+            <h2>Welcome to Awesome Gaming Hub</h2>
+            <p>Your ultimate destination for fun and exciting online games! Explore our collection and enjoy playing!</p>
+        </section>
 
-        // Game variables
-        let score = 0;
-        let gameOver = false;
-        let player = { x: 200, y: 500, width: 50, height: 50, speed: 10 };
-        let fallingObject = { x: Math.random() * canvas.width, y: -30, radius: 20, speed: 3 };
+        <section class="games">
+            <h2>Featured Games</h2>
+            <div class="game-list">
+                <div class="game-item">
+                    <h3>Game 1: Catch the Falling Objects</h3>
+                    <p>A fun game where you move left and right to catch falling objects.</p>
+                    <a href="game.html" class="btn">Play Now</a>
+                </div>
+                <div class="game-item">
+                    <h3>Game 2: Space Invaders</h3>
+                    <p>Defend Earth from waves of space invaders. Can you survive?</p>
+                    <a href="game.html" class="btn">Play Now</a>
+                </div>
+                <div class="game-item">
+                    <h3>Game 3: Speed Racer</h3>
+                    <p>Race against time and try to reach the finish line before the clock runs out.</p>
+                    <a href="game.html" class="btn">Play Now</a>
+                </div>
+            </div>
+        </section>
 
-        // Update the game state
-        function updateGame() {
-            if (gameOver) {
-                return;
-            }
-            
-            // Clear the canvas for the next frame
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw the player
-            ctx.fillStyle = '#3498db';
-            ctx.fillRect(player.x, player.y, player.width, player.height);
-            
-            // Draw the falling object
-            ctx.fillStyle = '#e74c3c';
-            ctx.beginPath();
-            ctx.arc(fallingObject.x, fallingObject.y, fallingObject.radius, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Move the falling object down
-            fallingObject.y += fallingObject.speed;
+    </main>
 
-            // Check if the falling object hit the player
-            if (fallingObject.y + fallingObject.radius > player.y && 
-                fallingObject.x > player.x && 
-                fallingObject.x < player.x + player.width) {
-                    score++;
-                    document.getElementById('score').innerText = score;
-                    fallingObject.y = -30; // Reset the falling object position
-                    fallingObject.x = Math.random() * canvas.width; // New random position
-            }
-
-            // Check if the falling object goes out of bounds
-            if (fallingObject.y > canvas.height) {
-                gameOver = true;
-                alert("Game Over! Your final score: " + score);
-            }
-
-            // Update the game loop
-            requestAnimationFrame(updateGame);
-        }
-
-        // Control the player with arrow keys
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'ArrowLeft' && player.x > 0) {
-                player.x -= player.speed;
-            }
-            if (event.key === 'ArrowRight' && player.x + player.width < canvas.width) {
-                player.x += player.speed;
-            }
-        });
-
-        // Start the game loop
-        updateGame();
-    </script>
+    <footer>
+        <p>&copy; 2024 Awesome Gaming Hub | All Rights Reserved</p>
+    </footer>
 </body>
 </html>
+2. HTML: game.html (Game Page)
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game: Catch the Falling Objects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Awesome Gaming Hub</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="game.html">Games</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <main>
+        <section class="game-container">
+            <h2>Catch the Falling Objects</h2>
+            <p>Use the left and right arrow keys to catch the falling objects and increase your score!</p>
+
+            <!-- Game Canvas -->
+            <canvas id="gameCanvas" width="500" height="600"></canvas>
+            
+            <div class="game-controls">
+                <p>Instructions: Use the left and right arrow keys to move.</p>
+                <p>Press "Play" to start the game.</p>
+                <button onclick="startGame()">Start Game</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Awesome Gaming Hub | All Rights Reserved</p>
+    </footer>
+
+    <script src="game.js"></script>
+</body>
+</html>
