@@ -1,96 +1,205 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Gaming Website</title>
+    <title>Mally's Sus gaming</title>
     <style>
+        * {
+            margin: 0;
+            padding:0;
+            box-sizing: border-box;
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
+            background: url('Backround.gif') no-repeat center center fixed; 
+            background-size: cover; 
+            color: white;
             text-align: center;
-        }
-        header h1 {
-            margin: 0;
-        }
-        .game-container {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin: 20px;
+            justify-content: center; 
+            align-items: flex-start; 
+            height: 100vh; 
+            padding-right: 48%;
         }
-        .game-card {
-            background-color: #fff;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 10px;
-            width: 300px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .game-card iframe {
-            width: 100%;
-            height: 200px;
-            border: none;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
+
+ 
+
+
+ .Home {
             position: fixed;
-            bottom: 0;
-            width: 100%;
+            right: 400px;  
+            top: 10px;  
+            width: 100px;  
+    
+        }
+        
+        .Games {
+            position: fixed;
+            right: 300px;  
+            top: 10px;    
+            width: 100px; 
+                }    
+             .Proxy {
+            position: fixed;
+            right: 245px;
+            top: 10px;
+          
+        }
+        .Forms{
+          position: fixed;
+            right: 145px;
+            top: 10px;   }
+            
+
+        .Proxy img, .Games img, .Home img, .Forms img {
+            display: block;
+            width: 100%; 
+            filter: brightness(1); 
+            box-shadow: none; 
+            transition: filter 0.3s ease, box-shadow 0.3s ease;
+              border-radius: 10px; 
+        }
+
+       .Proxy:hover img, .Games:hover img, .Home:hover img, .Forms:hover img {
+            filter: brightness(1.2); 
+            box-shadow: 0 0 10px 6px gray; 
+        }
+          .music-buttons-container {
+            position: fixed;
+            top: 2%; 
+            left: 54%;
+            display: flex;
+            flex-direction: column; 
+            gap: 10px;
+        }
+
+
+         .counter-container {
+           position: fixed;
+            left: 0.1%;  
+            top: 24%;   
+            width: 100px;  
+        }
+        .music-buttons-container button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #333;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .music-buttons-container button:hover {
+            background-color: #555;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Gaming Website</h1>
-    </header>
-
-    <div class="game-container">
-        <!-- Game 1 -->
-        <div class="game-card">
-            <h3>Game 1: Tetris</h3>
-            <iframe src="https://zeldym.github.io/Gaming/" title="Zeldym Gaming"></iframe>
-        </div>
-
-        <!-- Game 2 -->
-        <div class="game-card">
-            <h3>Game 2: Snake</h3>
-            <iframe src="https://mathworksheetmaker.github.io/Division/Home.html" title="Mally's Sus Gaming"></iframe>
-        </div>
-
-        <!-- Game 3 -->
-        <div class="game-card">
-            <h3>Game 3: Pacman</h3>
-            <iframe src="https://www.google.com/search?q=Pacman" title="Pacman Game"></iframe>
-        </div>
-
-        <!-- Game 4 -->
-        <div class="game-card">
-            <h3>Game 4: Flappy Bird</h3>
-            <iframe src="https://flappybird.io" title="Flappy Bird Game"></iframe>
-        </div>
-
-        <!-- Game 5 -->
-        <div class="game-card">
-            <h3>Game 5: Pong</h3>
-            <iframe src="https://ponggame.org" title="Pong Game"></iframe>
-        </div>
+   
+    <div class="music-buttons-container">
+        <button onclick="document.getElementById('background-music').play()">Play Music</button>
+        <button onclick="document.getElementById('background-music').pause()">Pause Music</button>
     </div>
 
-    <footer>
-        <p>&copy; 2024 My Gaming Website. All rights reserved.</p>
-    </footer>
+    
+    <audio id="background-music" loop>
+        <source src="CS.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 </body>
+      
+
+
+
+    </style>
+</head>
+<body>  
+     <img src="MSG.png" alt="Image" style="width: 150px;">
+       <div class="counter-container">
+<script type="text/javascript" src="https://www.stat-counter.org/count/gtgu"></script><br>
+ <a href='https://www.acadoo-medizin.com/'>Ghostwriter Medizin</a> <script type='text/javascript' src='https://whomania.com/ctr?id=94a4075d85d69e0c46347e252ab16a5dcc65ddf3'></script>
+    </div>
+
+
+
+    <div>
+        <h1 style="font-size:6vw; white-space: nowrap;">Mally's Gaming</h1>
+
+    
+
+        <h2>Have fun,be cool, and spread the word</h2>
+    </div>
+</body>
+
+
+<div class="Home">
+<a href="Home.html">
+<img src="home.png" alt="Image" style="width: 90px;"></a></div>
+<div class="Proxy">
+<a href="Proxy.html">
+<img src="Proxy.png" alt="Image" style="width: 75px;"></a></div>
+<div class="Games">
+<a href="Games.html">
+<img src="Games.png" alt="Image" style="width: 91px;"></a></div>
+<div class="Forms">
+<a href="HallofFame.html">
+<img src="HOF.png" alt="Image" style="width: 100px;"></a></div>
+
+
+     <h3 style="
+        position: absolute;
+        top: 23%;
+        left: 36%;
+        transform: translateY(-50%);
+        margin: 0;
+        font-size: 4vw;
+        white-space: nowrap;
+        font-family: Arial, sans-serif;
+        text-align: left;
+    ">
+        📣updates📣</h3>
+       <h3 style="
+        position: absolute;
+        top: 30%;
+        left: 26%;
+        transform: translateY(-50%);
+        margin: 0;
+        font-size: 2vw;
+        font-family: Arial, sans-serif;
+        text-align: left;
+    ">
+        <ul>
+       <li>We recently added Intersteller Proxy, drift boss, and idle breakout!</li></h3>
+</ul>
+           <h3 style="
+        position: absolute;
+        top: 37%;
+        left: 26%;
+        transform: translateY(-50%);
+        margin: 0;
+        font-size: 2vw;
+        font-family: Arial, sans-serif;
+        text-align: left;
+    ">
+        <ul>
+       <li> Get Better </a>  (Put https://discord.gg/3P2MJHxa in the proxy)</li></h3>
+</ul>
+       <h3 style="
+        position: absolute;
+        top: 51%;
+        left: 26%;
+        transform: translateY(-50%);
+        margin: 0;
+        font-size: 2vw;
+        font-family: Arial, sans-serif;
+        text-align: left;
+    ">
+        <ul>
+       <li>Uh Eeee</li></h3>
+</ul>
+    
 </html>
